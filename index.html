@@ -90,18 +90,32 @@
             color: white;
         }
 
-        /* Dashboard Grid */
-        .dashboard-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 2rem;
-            margin: 2rem 0;
+        .nav-btn.active {
+            background: var(--primary);
+            color: white;
         }
 
+        /* Dashboard Sections */
+        .dashboard-section {
+            display: none;
+        }
+
+        .dashboard-section.active {
+            display: block;
+            animation: fadeIn 0.5s ease-in;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Dashboard Cards */
         .dashboard-card {
             background: rgba(255, 255, 255, 0.95);
             border-radius: 15px;
             padding: 1.5rem;
+            margin: 1.5rem 0;
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
             transition: transform 0.3s ease;
             border: 1px solid rgba(255, 255, 255, 0.2);
@@ -130,97 +144,28 @@
             color: var(--dark);
         }
 
-        .kpi-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 1rem;
-            margin-top: 1rem;
-        }
-
-        .kpi-card {
-            background: var(--light);
-            padding: 1rem;
-            border-radius: 10px;
-            text-align: center;
-        }
-
-        .kpi-value {
-            font-size: 1.8rem;
-            font-weight: bold;
-            margin: 0.5rem 0;
-        }
-
-        .revenue { color: var(--success); }
-        .profit { color: var(--primary); }
-        .roms { color: var(--accent); }
-        .expansion { color: var(--warning); }
-
-        /* Charts */
-        .chart-container {
-            background: white;
-            border-radius: 10px;
-            padding: 1rem;
-            margin: 1rem 0;
-            height: 200px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background: linear-gradient(45deg, #f0f4ff, #f9fafb);
-        }
-
-        .chart-placeholder {
+        /* Image Styles */
+        .dashboard-image {
             width: 100%;
-            height: 100%;
-            background: repeating-linear-gradient(
-                45deg,
-                transparent,
-                transparent 10px,
-                #e5e7eb 10px,
-                #e5e7eb 20px
-            );
-            border-radius: 5px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: var(--dark);
-            font-weight: bold;
+            border-radius: 10px;
+            margin: 1rem 0;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            border: 3px solid white;
         }
 
-        /* Insights Section */
-        .insights-section {
-            background: rgba(255, 255, 255, 0.95);
-            border-radius: 20px;
-            padding: 2rem;
-            margin: 2rem 0;
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
-        }
-
-        .section-title {
-            font-size: 2rem;
-            text-align: center;
-            margin-bottom: 2rem;
-            color: var(--dark);
-            position: relative;
-        }
-
-        .section-title::after {
-            content: '';
-            position: absolute;
-            bottom: -10px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 100px;
-            height: 4px;
-            background: linear-gradient(90deg, var(--primary), var(--accent));
-            border-radius: 2px;
+        /* Insights Styles */
+        .insights-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin: 1.5rem 0;
         }
 
         .insight-card {
             background: var(--light);
             padding: 1.5rem;
-            border-radius: 15px;
-            margin: 1rem 0;
-            border-left: 5px solid var(--primary);
+            border-radius: 10px;
+            border-left: 4px solid var(--primary);
         }
 
         .insight-card.warning {
@@ -229,6 +174,41 @@
 
         .insight-card.success {
             border-left-color: var(--success);
+        }
+
+        .insight-card h4 {
+            color: var(--dark);
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .insight-card h4 i {
+            color: inherit;
+        }
+
+        /* KPI Grid */
+        .kpi-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin: 1.5rem 0;
+        }
+
+        .kpi-card {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 1.5rem;
+            border-radius: 10px;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .kpi-value {
+            font-size: 2rem;
+            font-weight: bold;
+            margin: 0.5rem 0;
         }
 
         /* Footer */
@@ -267,21 +247,6 @@
             transform: scale(1.1);
         }
 
-        /* Responsive */
-        @media (max-width: 768px) {
-            .header h1 {
-                font-size: 2rem;
-            }
-            
-            .dashboard-grid {
-                grid-template-columns: 1fr;
-            }
-            
-            .kpi-grid {
-                grid-template-columns: 1fr;
-            }
-        }
-
         /* Language Toggle */
         .lang-toggle {
             position: fixed;
@@ -308,6 +273,26 @@
             background: var(--primary);
             color: white;
         }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 2rem;
+            }
+            
+            .nav {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .nav-btn {
+                width: 200px;
+            }
+            
+            .insights-container {
+                grid-template-columns: 1fr;
+            }
+        }
     </style>
 </head>
 <body>
@@ -323,106 +308,121 @@
         </header>
 
         <nav class="nav">
-            <button class="nav-btn active" onclick="showDashboard('home')">
-                <i class="fas fa-home"></i> الرئيسية
+            <button class="nav-btn active" onclick="showSection('home')">
+                <i class="fas fa-home"></i> اللوحة الرئيسية
             </button>
-            <button class="nav-btn" onclick="showDashboard('states')">
+            <button class="nav-btn" onclick="showSection('states')">
                 <i class="fas fa-map"></i> تحليل الولايات
             </button>
-            <button class="nav-btn" onclick="showDashboard('cities')">
+            <button class="nav-btn" onclick="showSection('cities')">
                 <i class="fas fa-city"></i> تحليل المدن
-            </button>
-            <button class="nav-btn" onclick="showDashboard('insights')">
-                <i class="fas fa-chart-line"></i> الرؤى الاستراتيجية
             </button>
         </nav>
 
         <!-- Home Dashboard -->
-        <section id="home-dashboard" class="dashboard-section">
-            <div class="dashboard-grid">
-                <div class="dashboard-card">
-                    <div class="card-header">
-                        <i class="fas fa-chart-bar"></i>
-                        <h3>نظرة عامة على الأداء</h3>
+        <section id="home" class="dashboard-section active">
+            <div class="dashboard-card">
+                <div class="card-header">
+                    <i class="fas fa-chart-bar"></i>
+                    <h3>نظرة عامة على الأداء</h3>
+                </div>
+                
+                <img src="https://via.placeholder.com/1200x600/667eea/ffffff?text=Home+Dashboard" alt="اللوحة الرئيسية" class="dashboard-image">
+                
+                <div class="insights-container">
+                    <div class="insight-card">
+                        <h4><i class="fas fa-lightbulb"></i> الرؤى التحليلية</h4>
+                        <p><strong>هيمنة الولايات الكبرى:</strong> كاليفورنيا وتكساس تسجلان أعلى إنفاق تسويقي وإيرادات</p>
+                        <p><strong>كفاءة الأداء الإقليمي:</strong> المنطقة 2 تحقق إيرادات أعلى ولكن المنطقة 1 تتميز بكفاءة تسويقية أعلى (ROMS%)</p>
+                        <p><strong>نمو محدود للتوسعات الجديدة:</strong> التوسعات الحديثة لا تزال متواضعة مقارنة بالفروع القائمة</p>
                     </div>
-                    <p>تحليل شامل لأداء الشركات الناشئة عبر المناطق المختلفة</p>
                     
-                    <div class="kpi-grid">
-                        <div class="kpi-card">
-                            <div>الإيرادات الإجمالية</div>
-                            <div class="kpi-value revenue">$4.8M</div>
-                            <small>+12% عن الشهر الماضي</small>
-                        </div>
-                        <div class="kpi-card">
-                            <div>صافي الأرباح</div>
-                            <div class="kpi-value profit">$1.2M</div>
-                            <small>+8% عن الشهر الماضي</small>
-                        </div>
-                        <div class="kpi-card">
-                            <div>العائد على التسويق (ROMS%)</div>
-                            <div class="kpi-value roms">42%</div>
-                            <small>+5% عن الربع السابق</small>
-                        </div>
-                        <div class="kpi-card">
-                            <div>معدل التوسع</div>
-                            <div class="kpi-value expansion">18%</div>
-                            <small>+3% عن العام الماضي</small>
-                        </div>
+                    <div class="insight-card success">
+                        <h4><i class="fas fa-check-circle"></i> التوصيات الاستراتيجية</h4>
+                        <p><strong>تعزيز التوازن الإقليمي:</strong> زيادة الاستثمار في المنطقة 1 لتعظيم العائد على الإنفاق</p>
+                        <p><strong>تحسين الكفاءة:</strong> مراجعة استراتيجيات التسويق في كاليفورنيا لتعزيز العائد على الاستثمار</p>
+                        <p><strong>تسريع التوسع:</strong> زيادة الاستثمار في التوسعات الجديدة للنمو المستدام</p>
                     </div>
                 </div>
+            </div>
 
-                <div class="dashboard-card">
-                    <div class="card-header">
-                        <i class="fas fa-map-marked-alt"></i>
-                        <h3>التوزيع الجغرافي</h3>
-                    </div>
-                    <p>توزيع الفروع والإنفاق التسويقي عبر المناطق</p>
-                    <div class="chart-container">
-                        <div class="chart-placeholder">خريطة حرارية للتوزيع الجغرافي</div>
-                    </div>
+            <div class="kpi-grid">
+                <div class="kpi-card">
+                    <div>الإيرادات الإجمالية</div>
+                    <div class="kpi-value">$4.8M</div>
+                    <small>+12% عن الشهر الماضي</small>
                 </div>
-
-                <div class="dashboard-card">
-                    <div class="card-header">
-                        <i class="fas fa-trend-up"></i>
-                        <h3>اتجاهات الأداء</h3>
-                    </div>
-                    <p>مقارنة الأداء بين المناطق والولايات</p>
-                    <div class="chart-container">
-                        <div class="chart-placeholder">مخطط مقارنة الأداء الإقليمي</div>
-                    </div>
+                <div class="kpi-card">
+                    <div>صافي الأرباح</div>
+                    <div class="kpi-value">$1.2M</div>
+                    <small>+8% عن الشهر الماضي</small>
                 </div>
+                <div class="kpi-card">
+                    <div>العائد على التسويق</div>
+                    <div class="kpi-value">42%</div>
+                    <small>+5% عن الربع السابق</small>
+                </div>
+                <div class="kpi-card">
+                    <div>معدل التوسع</div>
+                    <div class="kpi-value">18%</div>
+                    <small>+3% عن العام الماضي</small>
+                </div>
+            </div>
+        </section>
 
-                <div class="dashboard-card">
-                    <div class="card-header">
-                        <i class="fas fa-bullseye"></i>
-                        <h3>أفضل الأداءات</h3>
+        <!-- States Analysis -->
+        <section id="states" class="dashboard-section">
+            <div class="dashboard-card">
+                <div class="card-header">
+                    <i class="fas fa-map"></i>
+                    <h3>تحليل الأداء على مستوى الولايات</h3>
+                </div>
+                
+                <img src="https://via.placeholder.com/1200x600/764ba2/ffffff?text=State+Analysis" alt="تحليل الولايات" class="dashboard-image">
+                
+                <div class="insights-container">
+                    <div class="insight-card">
+                        <h4><i class="fas fa-chart-line"></i> الرؤى التحليلية</h4>
+                        <p><strong>الربحية المركزة:</strong> كاليفورنيا، تكساس، وفلوريدا تساهم بأكبر حصة في الأرباح</p>
+                        <p><strong>تفوق إقليمي واضح:</strong> المنطقة 2 تسجل مساهمة ربحية أعلى من المنطقة 1</p>
+                        <p><strong>أسواق واعدة:</strong> ولايات مثل ألاباما وجورجيا تظهر عوائد جيدة بإنفاق محدود</p>
                     </div>
-                    <p>الولايات والمدن الأكثر ربحية وكفاءة</p>
-                    <div class="chart-container">
-                        <div class="chart-placeholder">قائمة أفضل 10 أداءات</div>
+                    
+                    <div class="insight-card warning">
+                        <h4><i class="fas fa-exclamation-triangle"></i> التوصيات الاستراتيجية</h4>
+                        <p><strong>تعزيز الأسواق الرائدة:</strong> الحفاظ على الاستثمار في كاليفورنيا وتكساس مع تحسين الكفاءة</p>
+                        <p><strong>استكشاف الفرص:</strong> التوسع في الولايات الواعدة بالمنطقة 1 مثل ألاباما وجورجيا</p>
+                        <p><strong>مراجعة الإنفاق:</strong> إعادة توجيه الاستثمارات في الولايات ذات العائد المحدود</p>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- Insights Section -->
-        <section id="insights-section" class="insights-section" style="display: none;">
-            <h2 class="section-title">الرؤى الاستراتيجية والتوصيات</h2>
-            
-            <div class="insight-card success">
-                <h3><i class="fas fa-lightbulb"></i> فرصة النمو الإقليمي</h3>
-                <p>المنطقة 1 تظهر كفاءة تسويقية أعلى (ROMS% 58%) مقارنة بالمنطقة 2 (ROMS% 42%)، مما يشير إلى إمكانية تحقيق عوائد أفضل من خلال زيادة الاستثمار في المنطقة 1.</p>
-            </div>
-            
-            <div class="insight-card warning">
-                <h3><i class="fas fa-exclamation-triangle"></i> تحسين الكفاءة في الأسواق الكبرى</h3>
-                <p>كاليفورنيا تسجل أعلى إنفاق تسويقي ولكن بكفاءة محدودة، مما يستدعي مراجعة استراتيجيات التسويق لتعزيز العائد على الاستثمار.</p>
-            </div>
-            
-            <div class="insight-card">
-                <h3><i class="fas fa-chart-line"></i> توسع استراتيجي</h3>
-                <p>مدن مثل روتشستر وليتل روك تظهر معدلات ربحية عالية مع توسع محدود، مما يمثل فرصة للنمو من خلال زيادة الاستثمار في هذه الأسواق.</p>
+        <!-- Cities Analysis -->
+        <section id="cities" class="dashboard-section">
+            <div class="dashboard-card">
+                <div class="card-header">
+                    <i class="fas fa-city"></i>
+                    <h3>تحليل الأداء على مستوى المدن</h3>
+                </div>
+                
+                <img src="https://via.placeholder.com/1200x600/f59e0b/ffffff?text=City+Analysis" alt="تحليل المدن" class="dashboard-image">
+                
+                <div class="insights-container">
+                    <div class="insight-card">
+                        <h4><i class="fas fa-building"></i> الرؤى التحليلية</h4>
+                        <p><strong>تميز المدن المتوسطة:</strong> روتشستر، أوكسنارد، وليتل روك تظهر معدلات ربحية عالية</p>
+                        <p><strong>تفاوت الأداء الإقليمي:</strong> المدن في المنطقة 2 تحقق أداءً أفضل من المنطقة 1</p>
+                        <p><strong>توسع محدود:</strong> التوسعات الجديدة غير متناسبة مع إمكانات الربحية في المدن المتميزة</p>
+                    </div>
+                    
+                    <div class="insight-card success">
+                        <h4><i class="fas fa-rocket"></i> التوصيات الاستراتيجية</h4>
+                        <p><strong>تعزيز النجاح المحلي:</strong> زيادة الاستثمار في المدن عالية الأداء مثل روتشستر وليتل روك</p>
+                        <p><strong>تحفيز التوسع:</strong> تشجيع الافتتاحات الجديدة في المدن الواعدة</p>
+                        <p><strong>تطوير استراتيجيات محلية:</strong> خطط تسويق مخصصة لكل مدينة لتحسين العائد</p>
+                    </div>
+                </div>
             </div>
         </section>
 
@@ -451,22 +451,42 @@
             });
             event.target.classList.add('active');
             
-            // Simple language toggle - in real implementation, you'd have full translation
+            // Simple language toggle
             if (lang === 'en') {
                 document.querySelector('h1').textContent = '🚀 Startup Analytics Hub';
                 document.querySelector('.header p').textContent = 'Advanced analysis of startup performance across geographic regions';
-                // Add more translations as needed
+                
+                // Update navigation
+                document.querySelectorAll('.nav-btn')[0].innerHTML = '<i class="fas fa-home"></i> Home Dashboard';
+                document.querySelectorAll('.nav-btn')[1].innerHTML = '<i class="fas fa-map"></i> State Analysis';
+                document.querySelectorAll('.nav-btn')[2].innerHTML = '<i class="fas fa-city"></i> City Analysis';
+                
+                // Update section titles
+                document.querySelectorAll('.card-header h3')[0].textContent = 'Performance Overview';
+                document.querySelectorAll('.card-header h3')[1].textContent = 'State Performance Analysis';
+                document.querySelectorAll('.card-header h3')[2].textContent = 'City Performance Analysis';
+                
             } else {
                 document.querySelector('h1').textContent = '🚀 مركز تحليلات الشركات الناشئة';
                 document.querySelector('.header p').textContent = 'تحليل متقدم لأداء الشركات الناشئة عبر المناطق الجغرافية المختلفة';
+                
+                // Update navigation
+                document.querySelectorAll('.nav-btn')[0].innerHTML = '<i class="fas fa-home"></i> اللوحة الرئيسية';
+                document.querySelectorAll('.nav-btn')[1].innerHTML = '<i class="fas fa-map"></i> تحليل الولايات';
+                document.querySelectorAll('.nav-btn')[2].innerHTML = '<i class="fas fa-city"></i> تحليل المدن';
+                
+                // Update section titles
+                document.querySelectorAll('.card-header h3')[0].textContent = 'نظرة عامة على الأداء';
+                document.querySelectorAll('.card-header h3')[1].textContent = 'تحليل الأداء على مستوى الولايات';
+                document.querySelectorAll('.card-header h3')[2].textContent = 'تحليل الأداء على مستوى المدن';
             }
         }
 
-        // Dashboard navigation
-        function showDashboard(dashboard) {
+        // Section navigation
+        function showSection(sectionId) {
             // Hide all sections
-            document.querySelectorAll('.dashboard-section, .insights-section').forEach(section => {
-                section.style.display = 'none';
+            document.querySelectorAll('.dashboard-section').forEach(section => {
+                section.classList.remove('active');
             });
             
             // Remove active class from all buttons
@@ -475,13 +495,8 @@
             });
             
             // Show selected section and activate button
-            if (dashboard === 'insights') {
-                document.getElementById('insights-section').style.display = 'block';
-                event.target.classList.add('active');
-            } else {
-                document.getElementById('home-dashboard').style.display = 'block';
-                event.target.classList.add('active');
-            }
+            document.getElementById(sectionId).classList.add('active');
+            event.target.classList.add('active');
         }
 
         // Add some interactive animations
@@ -489,7 +504,6 @@
             const cards = document.querySelectorAll('.dashboard-card');
             cards.forEach((card, index) => {
                 card.style.animationDelay = `${index * 0.1}s`;
-                card.classList.add('fade-in');
             });
         });
     </script>
