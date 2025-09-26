@@ -97,7 +97,7 @@ This project analyzes startup expansion, marketing spend, revenue, and profit ac
 ## 📈 Key Metrics | أهم المؤشرات  
 - 💰 Revenue (الإيرادات)  
 - 📊 Profit (الأرباح)  
-- 🎯 ROMS% (Return on Marketing Spend)  
+- 🎯 ROMS% (Return on Marketing Spend)  العائد على الإنفاق التسويقي
 - 🏙️ City & State expansion (توسع المدن والولايات)  
 
 ---
@@ -111,7 +111,8 @@ Startups-Data-Analysis/
 └── 📄 README.md           # وثيقة المشروع
 
 ---
-
+✨ تم تطوير هذا المشروع بهدف تحويل البيانات إلى رؤى قابلة للتطبيق تدعم اتخاذ القرارات الاستراتيجية.
+✨ This project was developed to transform raw data into actionable insights that support strategic decision-making.
 ---
 
 ## 📫 Let’s Connect | تواصل معي  
