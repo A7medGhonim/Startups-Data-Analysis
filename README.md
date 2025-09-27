@@ -19,7 +19,7 @@ This project analyzes startup expansion, marketing spend, revenue, and profit ac
 
 ## 📷 Dashboards | لوحات التحكم  
 
-### 🏠 Home Dashboard  
+### 🏠 Home Overview Dashboard  
 ![Home](Screenshot/Home.png)  
 
 **Insights | الإنسايت:**  
